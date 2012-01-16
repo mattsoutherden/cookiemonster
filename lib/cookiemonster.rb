@@ -4,6 +4,10 @@ require 'time'
 module CookieMonster
 
   def self.parse(set_cookie_string)
+    Cookie.new self.parse_hash(set_cookie_string)
+  end
+
+  def self.parse_hash(set_cookie_string)
     hash = set_cookie_string.split(/; ?/).inject({}) do |result, field|
       field_name, field_value = field.split('=', 2)
       result[field_name] = field_value
@@ -20,7 +24,7 @@ module CookieMonster
       options
     end
 
-    Cookie.new hash
+    hash
   end
 
   class Cookie
