@@ -7,9 +7,9 @@ Gem::Specification.new do |s|
   s.version     = CookieMonster::VERSION
   s.authors     = ["Matt Southerden"]
   s.email       = ["matt@localbubble.com"]
-  s.homepage    = ""
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
+  s.homepage    = "http://github.com/mattsoutherden/cookiemonster"
+  s.summary     = %q{Let CookieMonster munch your cookies}
+  s.description = %q{A library for working with Set-Cookie data in Ruby}
 
   s.rubyforge_project = "cookiemonster"
 
