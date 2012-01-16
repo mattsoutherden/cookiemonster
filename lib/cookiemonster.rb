@@ -49,6 +49,11 @@ module CookieMonster
       @session = expires.nil?
     end
 
+    def expired?
+      return false unless expires
+      Time.now > expires
+    end
+
     protected
 
     def parse_expiry(str)

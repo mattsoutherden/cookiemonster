@@ -37,6 +37,23 @@ describe 'Parsing Set-Cookie' do
       cookie.expires.must_equal Time.utc(2013, 12, 19, 17, 24, 17)
     end
 
+    it "should be expired when expires in past" do
+      yesterday = (Date.today - 1).httpdate
+      cookie = parse("foo=bar; expires=#{yesterday}")
+      assert cookie.expired?
+    end
+
+    it "should not be expired when expires in future" do
+      tomorrow = (Date.today + 1).httpdate
+      cookie = parse("foo=bar; expires=#{tomorrow}")
+      assert ! cookie.expired?
+    end
+
+    it "should not be expired when expires not set" do
+      cookie = parse('foo=bar')
+      assert ! cookie.expired?
+    end
+
     it "sets httponly" do
       cookie = parse('foo=bar; httponly')
       assert cookie.http_only?
